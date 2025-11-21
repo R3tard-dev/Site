@@ -30,7 +30,7 @@
         width: 100%;
         height: 100%;
         background: #000;
-        color: #00ff00;
+        color: #ffffff;
         font-family: "Courier New", monospace;
         padding: 40px;
         box-sizing: border-box;
@@ -326,7 +326,7 @@ const bootLines = [
     "> looking for degens...",
     "> none found...",
     "> setting up site...",
-    "> adding secret feature...",
+    "> adding secret features...",
     "> ready."
 ];
 
@@ -410,18 +410,5 @@ window.addEventListener("load", () => {
         height = canvas.height = window.innerHeight;
     });
 </script>
-
-<script>
-document.querySelectorAll('.tooltip').forEach(tooltip => {
-    tooltip.addEventListener('click', () => {
-        const tooltipText = tooltip.querySelector('.tooltip-text');
-        tooltipText.innerHTML = "copied!";
-        setTimeout(() => {
-            tooltipText.innerHTML = "username hidden for safety";
-        }, 1500);
-    });
-});
-</script>
-
 </body>
 </html>
