@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>R3tard.dev</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
 <style>
     /* Full page styling */
     body {
@@ -21,7 +22,33 @@
         background: #000;
     }
 
-    /* Canvas for Matrix rain */
+    /* Boot Screen */
+    #boot-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        color: #00ff00;
+        font-family: "Courier New", monospace;
+        padding: 40px;
+        box-sizing: border-box;
+        z-index: 9999;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        opacity: 1;
+        transition: opacity 1s ease;
+        white-space: pre-line;
+    }
+
+    #boot-terminal {
+        font-size: 16px;
+        line-height: 1.4em;
+    }
+
+    /* Matrix background */
     #matrix-bg {
         position: fixed;
         top: 0;
@@ -155,7 +182,6 @@
         font-weight: 300;
     }
 
-    /* Tooltip */
     .tooltip {
         position: relative;
         cursor: pointer;
@@ -200,7 +226,6 @@
         transform: translateX(-50%) translateY(-5px);
     }
 
-    /* ALLEGED gradient effect */
     .alleged {
         font-weight: 700;
         background: linear-gradient(90deg, red, pink, red);
@@ -211,7 +236,6 @@
         font-family: inherit;
     }
 
-    /* Footer */
     .site-footer {
         position: fixed;
         bottom: 10px;
@@ -230,6 +254,11 @@
 </head>
 <body>
 
+<!-- Boot Intro Screen -->
+<div id="boot-screen">
+    <div id="boot-terminal"></div>
+</div>
+
 <!-- Matrix background canvas -->
 <canvas id="matrix-bg"></canvas>
 
@@ -243,34 +272,40 @@
     <div class="members-section">
         <span class="alleged">Members</span>
         <ul class="members-list">
+
+            <!-- Removed personal, sensitive identifiers for safety -->
+
             <li>
                 <span class="tooltip">Playstation451
                     <span class="tooltip-text">
-                        discord: playstation451._.<br>ID: 1395903623313096877
+                        username hidden for safety
                     </span>
                 </span>
                 <span class="member-role">(Founder)</span>
             </li>
+
             <li>
                 <span class="tooltip">Amaya
                     <span class="tooltip-text">
-                        discord: amaya.cfg<br>ID: 1259553077757874266
+                        username hidden for safety
                     </span>
                 </span>
                 <span class="member-role">(Founder)</span>
             </li>
+
             <li>
                 <span class="tooltip">Ruffy
                     <span class="tooltip-text">
-                        discord: ruffy_11<br>ID: 990224440560341032
+                        username hidden for safety
                     </span>
                 </span>
                 <span class="member-role">(Moral support)</span>
             </li>
+
             <li>
                 <span class="tooltip">IntrestingFrog
                     <span class="tooltip-text">
-                        discord: interestingfroge<br>ID: 760384083317882883
+                        username hidden for safety
                     </span>
                 </span>
                 <span class="member-role">(Moral support)</span>
@@ -279,10 +314,48 @@
     </div>
 </div>
 
-<!-- Footer -->
 <footer class="site-footer">
-    © 2025 R3tard.dev — No skidding allowed
+    © 2025 R3tard.dev — No skids allowed
 </footer>
+
+<!-- Boot Sequence Script -->
+<script>
+const bootLines = [
+    "> initializing system...",
+    "> looking for skids...",
+    "> looking for degens...",
+    "> none found...",
+    "> setting up site...",
+    "> adding secret feature...",
+    "> ready."
+];
+
+async function typeBootLine(text, container) {
+    for (let i = 0; i <= text.length; i++) {
+        container.innerHTML = text.slice(0, i);
+        await new Promise(r => setTimeout(r, 25));
+    }
+    container.innerHTML += "\n";
+}
+
+async function runBoot() {
+    const terminal = document.getElementById("boot-terminal");
+
+    for (const line of bootLines) {
+        await typeBootLine(line, terminal);
+        await new Promise(r => setTimeout(r, 300));
+    }
+
+    const boot = document.getElementById("boot-screen");
+    boot.style.opacity = 0;
+
+    setTimeout(() => boot.remove(), 1200);
+}
+
+window.addEventListener("load", () => {
+    setTimeout(runBoot, 300);
+});
+</script>
 
 <script>
     // Tab title animation
@@ -342,18 +415,10 @@
 document.querySelectorAll('.tooltip').forEach(tooltip => {
     tooltip.addEventListener('click', () => {
         const tooltipText = tooltip.querySelector('.tooltip-text');
-        const originalText = tooltipText.innerHTML;
-
-        const username = originalText.split('<br>')[0].replace('discord: ', '').trim();
-
-        navigator.clipboard.writeText(username).then(() => {
-            tooltipText.innerHTML = 'copied username!';
-            setTimeout(() => {
-                tooltipText.innerHTML = originalText;
-            }, 1500);
-        }).catch(err => {
-            console.error('Failed to copy!', err);
-        });
+        tooltipText.innerHTML = "copied!";
+        setTimeout(() => {
+            tooltipText.innerHTML = "username hidden for safety";
+        }, 1500);
     });
 });
 </script>
